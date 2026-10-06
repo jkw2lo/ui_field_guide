@@ -1,6 +1,6 @@
 # UI Field Guide
 
-A searchable library of 265 named UI elements with live previews, plus a drag-and-drop mockup builder. It's a single HTML file with no build step and no dependencies to install.
+A searchable library of 285 named UI elements with live previews, plus a drag-and-drop mockup builder. It's a single HTML file with no build step and no dependencies to install.
 
 ## Run it
 
@@ -14,7 +14,7 @@ Then visit http://localhost:8000.
 
 ## What's inside
 
-**Library**: 265 elements in 12 groups (actions, inputs, selection, dials and control panels, navigation, layout, data display, feedback, overlays, media, typography and mockup tools). Each element has:
+**Library**: 285 elements in 12 groups (actions, inputs, selection, dials and control panels, navigation, layout, data display, feedback, overlays, media, typography and mockup tools). Each element has:
 
 - a live preview
 - its other common names ("snackbar", "kebab menu", "CTA"…)
@@ -22,12 +22,15 @@ Then visit http://localhost:8000.
 - related variations
 - a short code such as `nav.tabs` or `ctl.thermostat` that you can use to name it exactly in a request
 
+Ratings, reviews and scoring are well covered. There are star, icon and emoji rating inputs, NPS and Likert survey scales, and a feedback prompt. For display there are rating summaries with a star histogram, inline ratings, rating and score badges, category ratings, reviews with photos or a seller reply, review filters, pros and cons, scorecards, leaderboards, scoreboards, level progress and achievement badges.
+
 In the library, press **+** on any number of cards (or Shift-click them) to collect them in a tray, then add them all to the builder at once. **Help me choose** asks a few questions, such as what the control does, how many options it has and whether people pick one or several, then suggests matching elements.
 
 **Mockup builder**: drag elements onto a desktop (1280), tablet (834) or mobile (390) frame, then move, resize and relabel them and add notes. It has snap-to-grid, undo/redo and keyboard shortcuts.
 
 - **Palette**: hover an element to preview it, or switch on preview thumbnails. While you drag, the element shows at canvas scale. The **Blocks** tab has ready-made combinations such as headers, button pairs, sign-in and payment forms, KPI rows and landing-page sections. A block is added as a group: dragging moves the whole block, and Alt-drag moves one piece.
 - **Layout** adds preset guides, for example header + content, left · center · right, list · detail, dashboard or a column grid. Guides sit behind the elements, and edges snap to them. **Make editable** turns them into Region elements.
+- **Inspector**: hide or show the right-hand panel with the panel button at the end of the first toolbar row, the × in the panel, or ⌘/Ctrl \. Double-clicking an element brings it back.
 - **Toolbar**: the first row holds the mockup name and file actions. The second row is your **Groups** library. The screens strip below it has the screen tabs plus the frame, zoom, grid, layout and view controls.
 - **Select several**: drag a box on empty canvas, or Shift-click elements (⌘/Ctrl A selects all). Drag any selected element to move them all. The inspector can align, keep together, duplicate or delete the selection.
 - **Groups**: select elements such as a header and its menu, then press **Save selection**. The group appears in the second toolbar row. Click it to add it to the current screen in the same spot, Shift-click to add it to every screen that doesn't have it yet, or drag it into place. When frame sizes differ, full-width pieces stretch and right-aligned pieces keep their margin. Groups are kept per browser (or in the Artifact's shared database) and work in every mockup.
