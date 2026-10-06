@@ -297,6 +297,69 @@ textarea.inp{height:auto;min-height:64px;padding:8px 10px;resize:vertical;line-h
 .dlsec:last-child{border-bottom:0;padding-bottom:0}
 .dlsec h4{margin:0;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 
+
+/* ===== Design with AI: a low-fidelity canvas of intent blocks ===== */
+.modes .tab-ai{display:inline-flex;align-items:center;gap:6px}
+.modes .tab-ai[aria-selected="true"]{background:linear-gradient(135deg,color-mix(in srgb,#7C5CFF 16%,var(--surface)),color-mix(in srgb,#FF7AB6 14%,var(--surface)));color:var(--ink)}
+.modes .tab-ai svg{color:#7C5CFF}
+.ai-view{display:grid;grid-template-columns:1fr 320px;height:100%;min-height:0}
+.skwork{display:flex;flex-direction:column;min-width:0;min-height:0}
+.skbar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surface);flex-wrap:wrap}
+.skbar select{height:32px;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:0 8px;font-size:13px}
+.skarea{flex:1;overflow:auto;padding:32px;min-height:0;background-color:var(--bg);background-image:radial-gradient(circle,color-mix(in srgb,var(--ink) 10%,transparent) 1px,transparent 1.3px);background-size:18px 18px}
+.skwrap{position:relative;margin:0 auto}
+.skframe{position:absolute;left:0;top:0;transform-origin:0 0;background:var(--surface);border-radius:16px;box-shadow:0 0 0 1px var(--line),var(--shadow);padding:12px}
+.sk-box{display:flex;flex:1;min-width:0;min-height:0}
+.sk-col{flex-direction:column}.sk-row{flex-direction:row}
+.sk-slot{display:flex;min-width:0;min-height:0}
+.sk-sec{position:relative;flex:1;display:flex;flex-direction:column;gap:4px;min-width:0;min-height:0;overflow:hidden;padding:10px 12px;border-radius:12px;background:var(--tint);border:1.5px dashed color-mix(in srgb,var(--ink) 24%,transparent);cursor:pointer;transition:border-color .15s,box-shadow .15s,opacity .15s}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sk-sec{background:color-mix(in srgb,var(--tint) 16%,var(--surface))}}
+:root[data-theme="dark"] .sk-sec{background:color-mix(in srgb,var(--tint) 16%,var(--surface))}
+.sk-sec:hover{border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+.sk-sec.on{border:2px solid var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.sk-sec.lift{opacity:.35}
+.sk-head{display:flex;align-items:center;gap:6px;min-width:0}
+.sk-grip{cursor:grab;color:var(--muted);display:inline-flex;opacity:.5;touch-action:none;flex:none;padding:2px;margin-left:-4px;border-radius:4px}
+.sk-sec:hover .sk-grip{opacity:1}
+.sk-name{font:700 16px/1.2 var(--f-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;outline:none;color:var(--ink)}
+.sk-name[contenteditable="true"]{background:var(--surface);border-radius:4px;padding:0 4px;box-shadow:0 0 0 2px var(--accent);text-overflow:clip;cursor:text}
+.sk-tools{margin-left:auto;display:flex;gap:2px;opacity:0;transition:opacity .12s;flex:none}
+.sk-sec:hover .sk-tools,.sk-sec.on .sk-tools{opacity:1}
+.sk-tools button{width:26px;height:26px;border-radius:7px;border:0;background:color-mix(in srgb,var(--surface) 75%,transparent);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+.sk-tools button:hover{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.sk-intent{margin:0;font-size:13px;line-height:1.4;color:var(--ink);opacity:.82;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical}
+.sk-intent.ph{color:var(--muted);font-style:italic}
+.sk-div{flex:none;position:relative;z-index:2;touch-action:none}
+.sk-div.col{height:8px;cursor:row-resize}.sk-div.row{width:8px;cursor:col-resize}
+.sk-div::after{content:"";position:absolute;inset:3px 25%;border-radius:2px;background:var(--accent);opacity:0;transition:opacity .12s}
+.sk-div.row::after{inset:25% 3px}
+.sk-div:hover::after,.sk-div.drag::after{opacity:.75}
+.sk-div.end{height:16px}
+.skdrop{position:fixed;z-index:60;pointer-events:none;border-radius:10px;background:color-mix(in srgb,var(--accent) 20%,transparent);border:2px solid var(--accent);transition:all .08s}
+.skghost{position:fixed;z-index:61;pointer-events:none;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;font-size:13px;box-shadow:var(--shadow);transform:translate(12px,12px);white-space:nowrap}
+.skpanel{border-left:1px solid var(--line);background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:16px}
+.skacts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.skacts .b{justify-content:flex-start;font-size:12.5px;padding:0 10px;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.skpanel{overflow-x:hidden}
+.sknext{border-radius:12px;padding:12px 14px;background:linear-gradient(135deg,color-mix(in srgb,#7C5CFF 13%,var(--surface)),color-mix(in srgb,#FF7AB6 11%,var(--surface)));display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--muted)}
+.sknext b{display:flex;align-items:center;gap:6px;color:var(--ink);font-size:13px}
+.sknext b svg{color:#7C5CFF}
+.skoutline{display:flex;flex-direction:column;gap:1px;margin-bottom:4px}
+.skoutline button{display:flex;align-items:center;gap:8px;width:100%;border:0;background:none;padding:5px 8px;border-radius:6px;cursor:pointer;font-size:13px;text-align:left;color:var(--ink)}
+.skoutline button:hover{background:var(--bg)}
+.skoutline button.on{background:var(--soft);color:var(--accent);font-weight:600}
+.skoutline i{width:10px;height:10px;border-radius:3px;flex:none}
+.sktpl{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sktpl button{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:6px;cursor:pointer;display:flex;flex-direction:column;gap:6px;text-align:left}
+.sktpl button:hover{border-color:var(--accent)}
+.sktpl b{font-size:12px;font-weight:600}
+.skmini{height:96px;position:relative;overflow:hidden;background:var(--bg);border-radius:6px;pointer-events:none}
+.skmini>div{position:absolute;left:50%;top:8px;transform-origin:top center}
+.skmini .sk-tools,.skmini .sk-intent,.skmini .sk-grip,.skmini .sk-div.end{display:none}
+.skmini .sk-name{font-size:30px}
+@media (max-width:1100px){.ai-view{grid-template-columns:1fr;grid-template-rows:1fr auto}.skpanel{border-left:0;border-top:1px solid var(--line);max-height:44vh}}
+@media (max-width:760px){.skarea{padding:20px 16px}.modes{width:100%}.modes button{flex:1;padding:6px 8px;white-space:nowrap;justify-content:center}}
+
 /* play (click-through prototype) */
 .play{position:fixed;inset:0;z-index:58;background:var(--bg);display:flex;flex-direction:column}
 .play .pbar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surface);flex-wrap:wrap}
@@ -447,6 +510,7 @@ textarea.inp{height:auto;min-height:64px;padding:8px 10px;resize:vertical;line-h
   <header class="top">
     <div class="brand"><b>UI Field Guide</b><span id="countLbl"></span></div>
     <div class="modes" role="tablist">
+      <button role="tab" id="tabAI" aria-selected="false" class="tab-ai">Design with AI</button>
       <button role="tab" id="tabLib" aria-selected="true">Library</button>
       <button role="tab" id="tabBld" aria-selected="false">Mockup builder</button>
     </div>
@@ -469,6 +533,16 @@ textarea.inp{height:auto;min-height:64px;padding:8px 10px;resize:vertical;line-h
       </main>
     </div>
     <div class="tray" id="tray" hidden></div>
+  </section>
+
+  <section class="view" id="vAI" hidden>
+    <div class="ai-view">
+      <div class="skwork">
+        <div class="skbar" id="skBar"></div>
+        <div class="skarea" id="skArea"><div class="skwrap" id="skWrap"><div class="skframe" id="skFrame"></div></div></div>
+      </div>
+      <aside class="skpanel" id="skPanel"></aside>
+    </div>
   </section>
 
   <section class="view" id="vBld" hidden>
@@ -1055,8 +1129,8 @@ const $=s=>document.querySelector(s);
 function toast(msg){document.querySelectorAll('.toast').forEach(t=>t.remove());const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
 
 /* ---------- mode switching ---------- */
-function setMode(m){const lib=m!=='builder';$('#vLib').hidden=!lib;$('#vBld').hidden=lib;$('#tabLib').setAttribute('aria-selected',lib);$('#tabBld').setAttribute('aria-selected',!lib);try{history.replaceState(null,'','#'+(lib?'library':'builder'))}catch{};if(!lib)layoutFrame();LS.set('uifg.mode',m)}
-$('#tabLib').onclick=()=>setMode('library');$('#tabBld').onclick=()=>setMode('builder');
+function setMode(m){m=m==='builder'||m==='ai'?m:'library';$('#vLib').hidden=m!=='library';$('#vBld').hidden=m!=='builder';$('#vAI').hidden=m!=='ai';$('#tabLib').setAttribute('aria-selected',m==='library');$('#tabBld').setAttribute('aria-selected',m==='builder');$('#tabAI').setAttribute('aria-selected',m==='ai');try{history.replaceState(null,'','#'+(m==='ai'?'design':m))}catch{};if(m==='builder')layoutFrame();if(m==='ai')drawSketch();LS.set('uifg.mode',m)}
+$('#tabAI').onclick=()=>setMode('ai');$('#tabLib').onclick=()=>setMode('library');$('#tabBld').onclick=()=>setMode('builder');
 $('#countLbl').textContent=`${E.length} elements · ${CATS.length} groups`;
 
 /* ---------- library ---------- */
@@ -1298,7 +1372,7 @@ const isMob=(s=M)=>FR[s.frame][0]<600;
 function saveDraft(){clearTimeout(saveDraft.t);saveDraft.t=setTimeout(()=>{LS.set('uifg.draft',P);drawStatus()},300)}
 function drawStatus(){const s=$('#dirty');const ch=P.id&&P.savedSig!==sig();s.textContent=P.example?'Example':!P.id?'Not saved yet':ch?'Unsaved changes':'Saved';s.classList.toggle('on',!P.example&&(!P.id||!!ch))}
 function pushUndo(){undoS.push(JSON.stringify(P));if(undoS.length>80)undoS.shift();redoS=[]}
-function restore(s){P=JSON.parse(s);useScreen(P.cur);clearSel();drawAll();pushLib()}
+function restore(s){P=JSON.parse(s);useScreen(P.cur);clearSel();drawAll();pushLib();drawSketch()}
 function undo(){if(!undoS.length)return;redoS.push(JSON.stringify(P));restore(undoS.pop())}
 function redo(){if(!redoS.length)return;undoS.push(JSON.stringify(P));restore(redoS.pop())}
 const G=v=>snap?Math.round(v/8)*8:Math.round(v);
@@ -1421,7 +1495,7 @@ addEventListener('resize',()=>{if(!$('#vBld').hidden)layoutFrame();const o=docum
 
 function linkBadge(e){const n=scrName(e.link);return n?`<span class="lnkb" data-go="${esc(e.link)}" title="${e.link==='@back'?'Goes back to the previous screen (try it in Play)':`Goes to “${esc(n)}”. Click to open it.`}">${I(e.link==='@back'?'left':'right',11,3)}${esc(short(n,18))}</span>`:''}
 function drawCanvas(){const f=$('#frame');f.classList.toggle('grid',snap);applySty(f,P.style);const g=cur()?.g;f.innerHTML=(M.guides||[]).map(gd=>`<div class="guide${gd.col?' col':''}" style="left:${gd.x}px;top:${gd.y}px;width:${gd.w}px;height:${gd.h}px">${gd.label?`<span>${esc(gd.label)}</span>`:''}</div>`).join('')+M.els.map((e,i)=>`<div class="el${e.uid===sel?' sel':''}${ms.has(e.uid)?' msel':''}${g&&e.g===g&&e.uid!==sel?' grp':''}" data-uid="${e.uid}" style="left:${e.x}px;top:${e.y}px;width:${e.w}px;height:${e.h}px;z-index:${i+1}">${render(e.type,e.t)}${e.note?`<span class="note-dot" title="${esc(e.note)}">i</span>`:''}${e.link?linkBadge(e):''}${e.uid===sel?['nw','n','ne','e','se','s','sw','w'].map(d=>`<span class="hd" data-d="${d}"></span>`).join(''):''}</div>`).join('');layoutFrame()}
-function drawAll(){$('#mName').value=P.name;$('#mFrame').value=M.frame;$('#gridBtn').setAttribute('aria-pressed',snap);$('#gridBtn').style.color=snap?'var(--accent)':'';$('#layBtn').style.color=M.guides?.length?'var(--accent)':'';drawScreens();drawCanvas();if(flowOn)drawFlow();drawInsp();if(drawPal.k!==palKey())drawPal();saveDraft()}
+function drawAll(){if(!$('#vAI').hidden)queueMicrotask(drawSketch);$('#mName').value=P.name;$('#mFrame').value=M.frame;$('#gridBtn').setAttribute('aria-pressed',snap);$('#gridBtn').style.color=snap?'var(--accent)':'';$('#layBtn').style.color=M.guides?.length?'var(--accent)':'';drawScreens();drawCanvas();if(flowOn)drawFlow();drawInsp();if(drawPal.k!==palKey())drawPal();saveDraft()}
 const cur=()=>M.els.find(e=>e.uid===sel);
 const ms=new Set(); // multi-selection (two or more uids); a single selection lives in sel
 const selEls=()=>ms.size?M.els.filter(e=>ms.has(e.uid)):M.els.filter(e=>e.uid===sel);
@@ -1682,9 +1756,105 @@ $('#openBtn').onclick=()=>{refreshLocal();const m=showModal('Open a mockup',`<p 
   const dl=ev.target.closest('[data-del]');if(dl){if(dl.dataset.confirm){if(db){try{await db.doc('mockups/'+s.id).delete()}catch{toast('Could not delete')}}else{LS.set('uifg.saved',localSaved().filter(x=>x.id!==s.id));refreshLocal();drawSaved()}if(P.id===s.id){P.id=null;drawStatus()}toast('Deleted')}else{dl.dataset.confirm='1';dl.innerHTML='Delete?';dl.classList.remove('icon');dl.style.width='auto';dl.style.padding='0 10px'}}});
  $('#opFile').onchange=async ev=>{const f=ev.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(d.kind==='backup'){closeOverlay();return showRestore(d)}if(!d.screens&&!d.els)throw 0;for(const g of d.groups||[])if(!groups.some(x=>x.id===g.id))await putGroup(g);pushUndo();loadProject({...d,id:null,example:false});clearSel();pullLinked();closeOverlay();setFlow(false);toast(`Opened “${P.name}” from the file. Save keeps it here.`)}catch{toast('That file is not a UI Field Guide mockup')}}};
 
+/* ---------- Design with AI · phase 1: a low-fidelity canvas of intent blocks ----------
+   Each screen of the open mockup can carry a sketch: a tree of stacks ('col') and side-by-side rows ('row')
+   whose leaves are sections ({name, intent}). Children of the page stack have a pixel height in sz; anything
+   nested shares its parent's space by weight in sz. Later phases attach a design to each section and
+   translate it into Field Guide elements on the same screen. */
+Object.assign(IP,{grip:'<circle cx="9" cy="6" r="1.3" fill="currentColor"/><circle cx="15" cy="6" r="1.3" fill="currentColor"/><circle cx="9" cy="12" r="1.3" fill="currentColor"/><circle cx="15" cy="12" r="1.3" fill="currentColor"/><circle cx="9" cy="18" r="1.3" fill="currentColor"/><circle cx="15" cy="18" r="1.3" fill="currentColor"/>',splitr:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/>',splitb:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/>',merge:'<path d="M4 6h6v12H4zM14 6h6v12h-6z"/><path d="M10 12h4"/>'});
+const SKT=['#E6EDFF','#FFEBD6','#DFF5E8','#FBE3EF','#ECE5FF','#DDF1F6','#FFF4C7','#EFE9E0'];
+const skId=()=>'k'+uid();
+const sec=(name='New section',sz=160,intent='')=>({kind:'sec',id:skId(),name,intent,sz});
+const box=(kind,sz,kids)=>({kind,id:skId(),sz,kids});
+// Starting structures. Numbers on the page stack are pixel heights; anything nested is a share of its parent.
+const SKETCHES=[
+ {id:'basic',n:'Header + sections',f:mob=>box('col',0,[sec('Header',mob?56:72),sec('Section',200),box('row',220,[sec('Section',1),sec('Section',1)]),sec('Section',200)])},
+ {id:'dash',n:'Dashboard',only:'wide',f:()=>box('col',0,[sec('Header',72,'Logo, navigation and account'),sec('Summary',140,'The key numbers at a glance'),box('row',320,[sec('Main content',2),sec('Side panel',1)]),sec('History',220)])},
+ {id:'sidebar',n:'Sidebar app',only:'wide',f:()=>box('col',0,[box('row',640,[sec('Navigation',1,'The main areas of the app'),box('col',4.2,[sec('Page header',1),sec('Main content',4.5),sec('Secondary content',2.5)])])])},
+ {id:'listdetail',n:'List + detail',only:'wide',f:()=>box('col',0,[sec('Header',72),box('row',560,[sec('List',2,'Everything people can pick from'),sec('Detail',3,'The chosen item in full')])])},
+ {id:'landing',n:'Landing page',f:mob=>box('col',0,[sec('Navigation',mob?56:72),sec('Hero',mob?380:420,'The main promise and a call to action'),mob?sec('Features',360):box('row',260,[sec('Feature',1),sec('Feature',1),sec('Feature',1)]),sec('Social proof',180),sec('Call to action',160),sec('Footer',140)])},
+ {id:'mfeed',n:'Mobile feed',only:'mob',f:()=>box('col',0,[sec('Top bar',56),sec('Highlights',150),sec('Feed',460,'A scrolling list of items'),sec('Tab bar',64)])},
+ {id:'mdetail',n:'Mobile detail',only:'mob',f:()=>box('col',0,[sec('Top bar',56),sec('Hero image',240),sec('Title and key facts',120),sec('Details',260),sec('Action bar',76)])}];
+const sketchesFor=(s=M)=>SKETCHES.filter(t=>!t.only||t.only===(isMob(s)?'mob':'wide'));
+const skOf=(s=M)=>s.sketch||(s.sketch=SKETCHES[0].f(isMob(s)));
+let skSel=null,skScale=1,skDrag=null;
+function skFind(id,n=skOf(),parent=null){if(n.id===id)return {node:n,parent,idx:parent?parent.kids.indexOf(n):-1};for(const k of n.kids||[]){const r=skFind(id,k,n);if(r)return r}return null}
+const skLeaves=(n=skOf())=>n.kind==='sec'?[n]:n.kids.flatMap(k=>skLeaves(k));
+// each section keeps the colour it was given, cycling so neighbours differ
+let skTintNext=Date.now()%SKT.length;
+const skTint=n=>SKT[(n.tint??=skTintNext++%SKT.length)%SKT.length];
+const skPx=id=>document.querySelector(`#skFrame [data-id="${id}"]`)?.offsetHeight||160;
+// Tidy after an edit: drop empty boxes, unwrap boxes with one child, and flatten a stack in a stack (or a row in a row).
+function skTidy(n=skOf(),isRoot=true){if(!n.kids)return;n.kids.forEach(k=>skTidy(k,false));for(let i=0;i<n.kids.length;i++){const k=n.kids[i];if(!k.kids)continue;if(!k.kids.length){n.kids.splice(i--,1);continue}if(k.kids.length===1){k.kids[0].sz=k.sz;n.kids[i--]=k.kids[0];continue}if(k.kind===n.kind){const tot=k.kids.reduce((a,c)=>a+c.sz,0);k.kids.forEach(c=>c.sz=isRoot?Math.max(48,Math.round(k.sz*c.sz/tot)):k.sz*c.sz/tot);n.kids.splice(i--,1,...k.kids)}}if(isRoot&&!n.kids.length)n.kids.push(sec('Section',200))}
+// Put node next to the target. split halves the target's space; otherwise the node gets its own height on the page (px) or an average share.
+function skInsert(tid,zone,node,{split=false,px=160}={}){const t=skFind(tid);if(!t?.parent)return;const axis=zone==='left'||zone==='right'?'row':'col',after=zone==='right'||zone==='bottom',root=skOf(),p=t.parent;
+ if(p.kind===axis){const inRoot=p===root;if(split){const h=inRoot?Math.max(56,Math.round(t.node.sz/2)):t.node.sz/2;t.node.sz=h;node.sz=h}else node.sz=inRoot?Math.max(56,Math.round(px)):p.kids.reduce((a,c)=>a+c.sz,0)/p.kids.length;p.kids.splice(t.idx+(after?1:0),0,node)}
+ else{const w=box(axis,t.node.sz,after?[t.node,node]:[node,t.node]);t.node.sz=1;node.sz=1;p.kids[t.idx]=w}
+ skTidy()}
+function skDo(fn,keepSel){pushUndo();P.example=false;fn();skTidy();if(!keepSel&&skSel&&!skFind(skSel))skSel=null;saveDraft();drawSketch()}
+function skSplit(id,zone){const n=sec('New section');skDo(()=>skInsert(id,zone,n,{split:true}));skSel=n.id;drawSketch()}
+function skDup(id){const t=skFind(id);if(!t)return;const c={...JSON.parse(JSON.stringify(t.node)),id:skId()};skDo(()=>skInsert(id,t.parent.kind==='row'?'right':'bottom',c,{px:skPx(id)}));skSel=c.id;drawSketch()}
+function skDel(id){const t=skFind(id);if(!t?.parent)return;skDo(()=>t.parent.kids.splice(t.idx,1));toast(`Deleted “${t.node.name}”. Undo brings it back.`)}
+function skAdd(){const n=sec('New section',180);skDo(()=>skOf().kids.push(n));skSel=n.id;drawSketch();document.querySelector(`#skFrame [data-id="${n.id}"]`)?.scrollIntoView({block:'nearest',behavior:'smooth'})}
+// The leaf next to this one in the same stack or row, preferring the one after it
+function skNeighbor(id){const t=skFind(id);if(!t?.parent)return null;const k=t.parent.kids,n=k[t.idx+1]?.kind==='sec'?k[t.idx+1]:k[t.idx-1]?.kind==='sec'?k[t.idx-1]:null;return n&&{node:n,after:n===k[t.idx+1],row:t.parent.kind==='row'}}
+function skMerge(id){const t=skFind(id),nb=skNeighbor(id);if(!nb)return;skDo(()=>{const a=t.node,b=nb.node;a.sz+=b.sz;a.intent=[a.intent,b.intent].filter(Boolean).join(' ');if(!/^(New section|Section)$/.test(b.name)&&b.name!==a.name)a.name=/^(New section|Section)$/.test(a.name)?b.name:`${a.name} & ${b.name}`;t.parent.kids.splice(t.parent.kids.indexOf(b),1)},true)}
+function skShift(id,d){const t=skFind(id);if(!t?.parent)return;const j=t.idx+d;if(j<0||j>=t.parent.kids.length)return;skDo(()=>{const k=t.parent.kids;[k[t.idx],k[j]]=[k[j],k[t.idx]];[k[t.idx].sz,k[j].sz]=[k[j].sz,k[t.idx].sz]},true)}
+// Drag-and-drop: drop beside a section (left/right/top/bottom), on it (swap), or below the page (append)
+function skMove(sid,tid,zone){if(sid===tid)return;const s=skFind(sid);if(!s)return;const px=skPx(sid);
+ if(zone==='end')return skDo(()=>{s.parent.kids.splice(s.idx,1);skTidy();s.node.sz=Math.max(56,px);skOf().kids.push(s.node)},true);
+ const t=skFind(tid);if(!t)return;
+ if(zone==='center')return skDo(()=>{const a=s.node,b=t.node,sa=a.sz;s.parent.kids[s.idx]=b;t.parent.kids[t.idx]=a;a.sz=b.sz;b.sz=sa},true);
+ skDo(()=>{s.parent.kids.splice(s.idx,1);skTidy();skInsert(tid,zone,s.node,{px})},true)}
+
+/* rendering */
+// mini: a static thumbnail (no buttons, so it can sit inside a button)
+function skNodeHTML(n,root,mini){if(n.kind==='sec')return mini?`<div class="sk-sec" style="--tint:${SKT[(n.tint??0)%SKT.length]}"><b class="sk-name">${esc(n.name)}</b></div>`:`<div class="sk-sec${n.id===skSel?' on':''}" data-id="${n.id}" style="--tint:${skTint(n)}"><div class="sk-head"><span class="sk-grip" title="Drag to move">${I('grip',14)}</span><b class="sk-name" title="Double-click to rename">${esc(n.name)}</b><span class="sk-tools"><button data-sk="right" title="Split side by side">${I('splitr',14)}</button><button data-sk="bottom" title="Split top and bottom">${I('splitb',14)}</button><button data-sk="dup" title="Duplicate">${I('copy',13)}</button><button data-sk="del" title="Delete">${I('trash',13)}</button></span></div><p class="sk-intent${n.intent?'':' ph'}">${n.intent?esc(n.intent):'What should this section do?'}</p></div>`;
+ return n.kids.map((k,i)=>(i?(mini?`<div class="sk-div ${n.kind}"></div>`:`<div class="sk-div ${n.kind}" data-box="${n.id}" data-i="${i}"></div>`):'')+`<div class="sk-slot" data-slot="${k.id}" style="${root?`height:${Math.round(k.sz)}px;flex:none`:`flex:${k.sz} 1 0`}">${k.kind==='sec'?skNodeHTML(k,false,mini):`<div class="sk-box sk-${k.kind}" data-id="${k.id}">${skNodeHTML(k,false,mini)}</div>`}</div>`).join('')+(root&&!mini?`<div class="sk-div col end" data-box="${n.id}" data-i="${n.kids.length}" title="Drag to make the last section taller"></div>`:'')}
+const skTreeHTML=(tree,W,mini)=>`<div class="sk-box sk-col sk-root" style="width:${W}px">${skNodeHTML(tree,true,mini)}</div>`;
+function drawSketch(){if($('#vAI').hidden)return;const root=skOf();skTidy();if(skSel&&!skFind(skSel))skSel=null;const W=FR[M.frame][0];
+ $('#skBar').innerHTML=`<div class="stabs">${P.screens.map(s=>`<button class="stab${s===M?' on':''}" data-skscr="${s.sid}">${esc(short(s.name,24))}<span class="k">${FR[s.frame][2]}</span></button>`).join('')}<button class="b sm" data-skact="page" title="Add a page">${I('plus',13)}Page</button></div><select id="skFrameSel" aria-label="Page size">${Object.entries(FR).map(([k,v])=>`<option value="${k}"${k===M.frame?' selected':''}>${v[2]} ${v[0]}</option>`).join('')}</select><span class="sepv"></span><button class="b icon" data-skact="undo" title="Undo (Ctrl/⌘+Z)">${I('undo',15)}</button><button class="b icon" data-skact="redo" title="Redo (Ctrl/⌘+Shift+Z)">${I('redo',15)}</button><span class="sepv"></span><button class="b" data-skact="save" title="Save (Ctrl/⌘+S)">Save</button><button class="b" data-skact="builder" title="Open this page in the mockup builder">Open in builder</button>`;
+ const f=$('#skFrame');f.innerHTML=skTreeHTML(root,W);const area=$('#skArea');skScale=Math.min(1,(area.clientWidth-(innerWidth<760?32:64))/(W+24));f.style.transform=`scale(${skScale})`;$('#skWrap').style.width=f.offsetWidth*skScale+'px';$('#skWrap').style.height=f.offsetHeight*skScale+'px';
+ drawSkPanel()}
+function skOutline(n=skOf(),depth=0){return n.kind==='sec'?`<button data-sksel="${n.id}" class="${n.id===skSel?'on':''}" style="padding-left:${8+depth*14}px"><i style="background:${skTint(n)};box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)"></i>${esc(n.name)}</button>`:n.kids.map(k=>skOutline(k,depth+(n===skOf()?0:1))).join('')}
+function drawSkPanel(){const p=$('#skPanel'),n=skSel&&skFind(skSel);
+ if(!n){p.innerHTML=`<div class="fld"><span class="eyebrow">Page</span><input class="inp" id="skPage" aria-label="Page name" value="${esc(M.name)}" style="font:700 17px var(--f-display);height:38px"></div><div class="fld"><label for="skPurpose">What is this page for?</label><textarea class="inp" id="skPurpose" rows="3" placeholder="e.g. “Track my watercolour practice: what I’ve painted, which subjects, and how consistent I’ve been.”">${esc(M.notes||'')}</textarea></div><div class="fld"><label>Sections</label><div class="skoutline">${skOutline()}</div><button class="b" data-skact="add" style="align-self:flex-start">${I('plus',14)}Add section</button></div><div class="fld"><label>Start from a structure</label><div class="sktpl">${sketchesFor().map(t=>`<button data-sktpl="${t.id}" title="Replace this page’s sections with “${t.n}”"><div class="skmini">${skMini(t.f(isMob()))}</div><b>${t.n}</b></button>`).join('')}</div></div><div class="fld"><label>Hand off</label><button class="b" data-skact="guides" style="align-self:flex-start">${I('cols',14)}Use as layout guides in the builder</button><span class="hint">Your sections become labelled guides on this page in the mockup builder.</span></div><div class="keys"><b style="color:var(--ink)">How it works</b><br>Block out the page with rough sections. Name each one and say what it should do; no UI terms needed.<br>Drag ${I('grip',11)} to move a section, beside or onto another. Drag the gaps to resize. Double-click a name to rename. <kbd>Delete</kbd> removes, <kbd>⌘/Ctrl D</kbd> duplicates.</div>`;
+  let typing=false;$('#skPage').oninput=ev=>{if(!typing){pushUndo();typing=true}M.name=ev.target.value;document.querySelector(`#skBar [data-skscr="${M.sid}"]`)?.firstChild&&(document.querySelector(`#skBar [data-skscr="${M.sid}"]`).firstChild.textContent=short(M.name,24));saveDraft()};$('#skPurpose').oninput=ev=>{M.notes=ev.target.value;saveDraft()};return}
+ const s=n.node,nb=skNeighbor(s.id),row=n.parent?.kind==='row',sib=n.parent?.kids||[];
+ p.innerHTML=`<div class="fld"><span class="eyebrow">Section</span><input class="inp" id="skName" aria-label="Section name" value="${esc(s.name)}" style="font:700 17px var(--f-display);height:38px"></div><div class="fld"><label for="skIntent">What should this section do?</label><textarea class="inp" id="skIntent" rows="4" placeholder="In your own words, e.g. “Show what I’ve painted recently so I can open one.”">${esc(s.intent||'')}</textarea><span class="hint">Describe the goal, not the widget. No UI terms needed.</span></div><div class="fld"><label>Shape</label><div class="skacts"><button class="b" data-skact="right">${I('splitr',14)}Split side by side</button><button class="b" data-skact="bottom">${I('splitb',14)}Split top / bottom</button><button class="b" data-skact="dup">${I('copy',14)}Duplicate</button><button class="b" data-skact="merge" ${nb?'':'disabled'} title="${nb?`Join with “${esc(nb.node.name)}”`:'No section next to this one to join'}">${I('merge',14)}${nb?`Merge with ${nb.row?(nb.after?'right':'left'):(nb.after?'below':'above')}`:'Merge'}</button><button class="b" data-skact="prev" ${n.idx>0?'':'disabled'}>${I(row?'left':'up',14)}Move ${row?'left':'up'}</button><button class="b" data-skact="next" ${n.idx<sib.length-1?'':'disabled'}>${I(row?'right':'down',14)}Move ${row?'right':'down'}</button></div><button class="b danger" data-skact="del" style="align-self:flex-start">${I('trash',14)}Delete section</button></div><div class="sknext"><b>${I('sparkle',14)} Next: design it with AI</b><span>Soon you’ll describe this section in a sentence and pick from a few visual options. For now, a clear name and goal are all it needs.</span></div><button class="b" data-skact="deselect" style="align-self:flex-start">${I('left',14)}Back to page</button>`;
+ let typing=false;$('#skName').oninput=ev=>{if(!typing){pushUndo();typing=true}s.name=ev.target.value;const el=document.querySelector(`#skFrame [data-id="${s.id}"] .sk-name`);if(el)el.textContent=s.name;saveDraft()};
+ $('#skIntent').oninput=ev=>{if(!typing){pushUndo();typing=true}s.intent=ev.target.value;const el=document.querySelector(`#skFrame [data-id="${s.id}"] .sk-intent`);if(el){el.textContent=s.intent||'What should this section do?';el.classList.toggle('ph',!s.intent)}saveDraft()}}
+const skMini=tree=>{const W=FR[M.frame][0];let t=0;const paint=n=>n.kind==='sec'?n.tint=t++:n.kids.forEach(paint);paint(tree);return `<div style="transform:translateX(-50%) scale(${Math.min(140/W,.3)})">${skTreeHTML(tree,W,true)}</div>`};
+function skToGuides(){const fr=$('#skFrame .sk-root').getBoundingClientRect();pushUndo();M.guides=skLeaves().map(n=>{const r=document.querySelector(`#skFrame [data-id="${n.id}"]`).getBoundingClientRect();return {label:n.name,x:Math.round((r.left-fr.left)/skScale),y:Math.round((r.top-fr.top)/skScale),w:Math.round(r.width/skScale),h:Math.round(r.height/skScale)}});M.layout='';saveDraft();setMode('builder');drawAll();toast(`${M.guides.length} sections are now layout guides. Elements snap to them.`)}
+function skRename(el){const id=el.closest('.sk-sec').dataset.id,t=skFind(id);if(!t)return;el.contentEditable='true';el.focus();getSelection().selectAllChildren(el);const done=save=>{el.contentEditable='false';el.onblur=el.onkeydown=null;const v=el.textContent.trim();if(save&&v&&v!==t.node.name){skDo(()=>t.node.name=v,true)}else el.textContent=t.node.name};el.onblur=()=>done(true);el.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();el.blur()}if(ev.key==='Escape'){done(false)}}}
+
+/* events */
+$('#skBar').addEventListener('click',ev=>{const t=ev.target.closest('[data-skscr]');if(t){useScreen(t.dataset.skscr);skSel=null;drawAll();return drawSketch()}const a=ev.target.closest('[data-skact]')?.dataset.skact;if(a==='page'){pushUndo();const s=blankScreen(`Page ${P.screens.length+1}`,M.frame);P.screens.push(s);useScreen(s.sid);skSel=null;drawAll();drawSketch()}if(a==='undo')undo();if(a==='redo')redo();if(a==='save')saveProject(false);if(a==='builder'){setMode('builder');drawAll()}});
+$('#skBar').addEventListener('change',ev=>{if(ev.target.id!=='skFrameSel')return;pushUndo();M.frame=ev.target.value;drawAll();drawSketch()});
+$('#skPanel').addEventListener('click',ev=>{const sl=ev.target.closest('[data-sksel]');if(sl){skSel=sl.dataset.sksel;return drawSketch()}const tp=ev.target.closest('[data-sktpl]');if(tp){const tpl=SKETCHES.find(x=>x.id===tp.dataset.sktpl);skDo(()=>M.sketch=tpl.f(isMob()));return toast(`Started from “${tpl.n}”. Undo brings your sections back.`)}const a=ev.target.closest('[data-skact]')?.dataset.skact;if(!a)return;
+ if(a==='add')return skAdd();if(a==='guides')return skToGuides();if(a==='deselect'){skSel=null;return drawSketch()}if(!skSel)return;
+ ({right:()=>skSplit(skSel,'right'),bottom:()=>skSplit(skSel,'bottom'),dup:()=>skDup(skSel),del:()=>skDel(skSel),merge:()=>skMerge(skSel),prev:()=>skShift(skSel,-1),next:()=>skShift(skSel,1)})[a]?.()});
+$('#skFrame').addEventListener('click',ev=>{const b=ev.target.closest('[data-sk]');const s=ev.target.closest('.sk-sec');if(b&&s){ev.stopPropagation();const id=s.dataset.id;return ({right:()=>skSplit(id,'right'),bottom:()=>skSplit(id,'bottom'),dup:()=>skDup(id),del:()=>skDel(id)})[b.dataset.sk]()}if(s&&!ev.target.closest('.sk-grip')&&s.dataset.id!==skSel){skSel=s.dataset.id;drawSketch()}});
+$('#skFrame').addEventListener('dblclick',ev=>{const s=ev.target.closest('.sk-sec');if(!s)return;skSel=s.dataset.id;drawSketch();skRename(document.querySelector(`#skFrame [data-id="${skSel}"] .sk-name`))});
+$('#skArea').addEventListener('click',ev=>{if(!ev.target.closest('.sk-sec')&&!ev.target.closest('.sk-div')&&skSel){skSel=null;drawSketch()}});
+// resize by dragging the gaps; the page stack works in pixels, nested boxes share space by weight
+$('#skFrame').addEventListener('pointerdown',ev=>{if(ev.button!==0)return;const d=ev.target.closest('.sk-div');if(d){ev.preventDefault();const b=skFind(d.dataset.box).node,i=+d.dataset.i,root=b===skOf(),horiz=b.kind==='row',el=root?$('#skFrame .sk-root'):document.querySelector(`#skFrame [data-id="${b.id}"]`);const sum=b.kids.reduce((a,c)=>a+c.sz,0),len=horiz?el.offsetWidth:el.offsetHeight;skDrag={kind:'size',d,b,a:b.kids[i-1],c:root?null:b.kids[i],root,horiz,start:horiz?ev.clientX:ev.clientY,a0:b.kids[i-1].sz,c0:root?0:b.kids[i].sz,unit:len/sum,before:JSON.stringify(P),moved:false};d.classList.add('drag');d.setPointerCapture(ev.pointerId);return}
+ const g=ev.target.closest('.sk-grip');if(g){ev.preventDefault();skDrag={kind:'move',id:g.closest('.sk-sec').dataset.id,sx:ev.clientX,sy:ev.clientY,moved:false};addEventListener('pointermove',skMoveDrag);addEventListener('pointerup',skDrop,{once:true})}});
+$('#skFrame').addEventListener('pointermove',ev=>{const k=skDrag;if(k?.kind!=='size')return;const delta=((k.horiz?ev.clientX:ev.clientY)-k.start)/skScale;if(!k.moved&&Math.abs(delta)<2)return;k.moved=true;const slot=x=>document.querySelector(`#skFrame [data-slot="${x.id}"]`);
+ if(k.root){k.a.sz=Math.max(48,Math.round(k.a0+delta));slot(k.a).style.height=k.a.sz+'px';const f=$('#skFrame');$('#skWrap').style.height=f.offsetHeight*skScale+'px'}
+ else{const min=44/k.unit,tot=k.a0+k.c0;k.a.sz=Math.min(tot-min,Math.max(min,k.a0+delta/k.unit));k.c.sz=tot-k.a.sz;slot(k.a).style.flex=`${k.a.sz} 1 0`;slot(k.c).style.flex=`${k.c.sz} 1 0`}});
+const skEndSize=()=>{const k=skDrag;if(k?.kind!=='size')return;skDrag=null;k.d.classList.remove('drag');if(k.moved){undoS.push(k.before);redoS=[];P.example=false;saveDraft();drawSketch()}};
+$('#skFrame').addEventListener('pointerup',skEndSize);$('#skFrame').addEventListener('pointercancel',skEndSize);
+function skZone(ev){const el=document.elementFromPoint(ev.clientX,ev.clientY);const s=el?.closest('#skFrame .sk-sec');if(s&&s.dataset.id!==skDrag.id){const r=s.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width,y=(ev.clientY-r.top)/r.height;const zone=x<.25?'left':x>.75?'right':y<.3?'top':y>.7?'bottom':'center';return {id:s.dataset.id,zone,r}}const fr=$('#skFrame').getBoundingClientRect();if(el?.closest('#skArea')&&ev.clientY>fr.bottom-24*skScale&&ev.clientX>fr.left&&ev.clientX<fr.right)return {zone:'end',r:{left:fr.left+12*skScale,top:fr.bottom-30*skScale,width:fr.width-24*skScale,height:24*skScale}};return null}
+function skMoveDrag(ev){const k=skDrag;if(k?.kind!=='move')return;if(!k.moved){if(Math.hypot(ev.clientX-k.sx,ev.clientY-k.sy)<5)return;k.moved=true;k.ghost=document.createElement('div');k.ghost.className='skghost';k.ghost.textContent=skFind(k.id).node.name;document.body.appendChild(k.ghost);k.ind=document.createElement('div');k.ind.className='skdrop';document.body.appendChild(k.ind);document.querySelector(`#skFrame [data-id="${k.id}"]`)?.classList.add('lift')}k.ghost.style.left=ev.clientX+'px';k.ghost.style.top=ev.clientY+'px';const z=k.z=skZone(ev);if(!z){k.ind.style.display='none';return}const r=z.r,h={left:[0,0,.5,1],right:[.5,0,.5,1],top:[0,0,1,.5],bottom:[0,.5,1,.5],center:[0,0,1,1],end:[0,0,1,1]}[z.zone];Object.assign(k.ind.style,{display:'block',left:r.left+r.width*h[0]+'px',top:r.top+r.height*h[1]+'px',width:r.width*h[2]+'px',height:r.height*h[3]+'px'})}
+function skDrop(){removeEventListener('pointermove',skMoveDrag);const k=skDrag;skDrag=null;if(k?.kind!=='move')return;k.ghost?.remove();k.ind?.remove();document.querySelector('#skFrame .lift')?.classList.remove('lift');if(!k.moved){skSel=k.id;return drawSketch()}if(k.z){skMove(k.id,k.z.id,k.z.zone);skSel=k.id;drawSketch()}}
+addEventListener('keydown',ev=>{if($('#vAI').hidden||document.getElementById('ovl'))return;const typing=ev.target.matches('input,textarea,select,[contenteditable=true]'),mod=ev.metaKey||ev.ctrlKey,k=ev.key.toLowerCase();if(mod&&k==='s'){ev.preventDefault();return saveProject(ev.shiftKey)}if(typing)return;if(mod&&k==='z'){ev.preventDefault();return ev.shiftKey?redo():undo()}if(!skSel)return;if(ev.key==='Escape'){skSel=null;return drawSketch()}if(ev.key==='Delete'||ev.key==='Backspace'){ev.preventDefault();return skDel(skSel)}if(mod&&k==='d'){ev.preventDefault();return skDup(skSel)}if(ev.key==='Enter'){ev.preventDefault();skRename(document.querySelector(`#skFrame [data-id="${skSel}"] .sk-name`))}});
+addEventListener('resize',()=>{if(!$('#vAI').hidden)drawSketch()});
+
 /* ---------- boot ---------- */
 buildRail();drawLibSty();drawLib();drawTray();drawPal();pullLinked();drawGroupsBar();setFlow(false);
-const startHash=location.hash.replace('#','');setMode(startHash==='builder'||startHash==='library'?startHash:(LS.get('uifg.mode','library')));
+$('#tabAI').innerHTML=I('sparkle',14)+'Design with AI';
+const startHash=location.hash.replace('#','');setMode(startHash==='design'?'ai':startHash==='builder'||startHash==='library'?startHash:(LS.get('uifg.mode','library')));
 </script>
 </body>
 </html>
