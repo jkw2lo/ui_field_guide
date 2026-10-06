@@ -32,6 +32,8 @@ Many everyday elements also come in more styles: outline, gradient and 3D button
 
 In the library, press **+** on any number of cards (or Shift-click them) to collect them in a tray, then add them all to the builder at once. **Help me choose** asks a few questions, such as what the control does, how many options it has and whether people pick one or several, then suggests matching elements.
 
+**Design with AI** (in progress): sketch a page with rough sections instead of picking components. Each section is just a name and, in your own words, what it should do. Start from a structure (header + sections, dashboard, sidebar app, list + detail, landing page, mobile feed, mobile detail) or add your own. You can split sections side by side or top to bottom, merge, duplicate, delete, drag a section beside or onto another, drag the gaps to resize, and double-click to rename. Sketches are saved with the mockup (each page of it has its own), and **Use as layout guides** hands the sections to the builder. Next phases: AI suggests visual options for each section, refines them in conversation, and exports a structured spec for Claude Code.
+
 **Mockup builder**: drag elements onto a desktop (1280), tablet (834) or mobile (390) frame, then move, resize and relabel them and add notes. It has snap-to-grid, undo/redo and keyboard shortcuts.
 
 - **Palette**: hover an element to preview it, or switch on preview thumbnails. While you drag, the element shows at canvas scale. The **Blocks** tab has ready-made combinations such as headers, button pairs, sign-in and payment forms, KPI rows and landing-page sections. A block is added as a group: dragging moves the whole block, and Alt-drag moves one piece.
