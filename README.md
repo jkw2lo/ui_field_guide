@@ -1,6 +1,6 @@
 # UI Field Guide
 
-A searchable library of 285 named UI elements with live previews, plus a drag-and-drop mockup builder. It's a single HTML file with no build step and no dependencies to install.
+A searchable library of 379 named UI elements with live previews, plus a drag-and-drop mockup builder. It's a single HTML file with no build step and no dependencies to install.
 
 ## Run it
 
@@ -14,7 +14,7 @@ Then visit http://localhost:8000.
 
 ## What's inside
 
-**Library**: 285 elements in 12 groups (actions, inputs, selection, dials and control panels, navigation, layout, data display, feedback, overlays, media, typography and mockup tools). Each element has:
+**Library**: 379 elements in 14 groups (actions, inputs, selection, dials and control panels, navigation, layout, data display, feedback, overlays, media, AI & chat, commerce, typography and mockup tools). Each element has:
 
 - a live preview
 - its other common names ("snackbar", "kebab menu", "CTA"…)
@@ -24,12 +24,19 @@ Then visit http://localhost:8000.
 
 Ratings, reviews and scoring are well covered. There are star, icon and emoji rating inputs, NPS and Likert survey scales, and a feedback prompt. For display there are rating summaries with a star histogram, inline ratings, rating and score badges, category ratings, reviews with photos or a seller reply, review filters, pros and cons, scorecards, leaderboards, scoreboards, level progress and achievement badges.
 
+**AI & chat** covers assistant patterns: prompt box, welcome screen, suggested prompts, conversation, answers with sources and inline citations, response actions, thinking and agent-step indicators, model picker, chat history, attachments, chat + canvas, suggested edits and voice mode. **Commerce** covers buying: product gallery, variant picker, buy box, sale price, delivery info, badges, results bar, filters, bundles, subscriptions, cart items, cart drawer, promo codes, shipping and payment pickers, order confirmation and order tracking.
+
+Many everyday elements also come in more styles: outline, gradient and 3D buttons; filled, underlined and currency fields; split and product-shot heroes; bento and masonry grids; horizontal and overlay cards; stacked area, horizontal, stacked bar, funnel, radar, treemap and Gantt charts; alert tones, toasts with undo and loading dots.
+
+**Preview style** at the top of the library restyles every preview at once: Default, Rounded, Sharp, Brutalist, Glass, Soft UI or Dark, with any accent colour.
+
 In the library, press **+** on any number of cards (or Shift-click them) to collect them in a tray, then add them all to the builder at once. **Help me choose** asks a few questions, such as what the control does, how many options it has and whether people pick one or several, then suggests matching elements.
 
 **Mockup builder**: drag elements onto a desktop (1280), tablet (834) or mobile (390) frame, then move, resize and relabel them and add notes. It has snap-to-grid, undo/redo and keyboard shortcuts.
 
 - **Palette**: hover an element to preview it, or switch on preview thumbnails. While you drag, the element shows at canvas scale. The **Blocks** tab has ready-made combinations such as headers, button pairs, sign-in and payment forms, KPI rows and landing-page sections. A block is added as a group: dragging moves the whole block, and Alt-drag moves one piece.
 - **Layout** adds preset guides, for example header + content, left · center · right, list · detail, dashboard or a column grid. Guides sit behind the elements, and edges snap to them. **Make editable** turns them into Region elements.
+- **Look**: each mockup has its own visual style and accent colour, set in the screen inspector. The canvas, palette previews, flow map, Play and exported images all follow it, and Copy for Claude describes it.
 - **Inspector**: hide or show the right-hand panel with the panel button at the end of the first toolbar row, the × in the panel, or ⌘/Ctrl \. Double-clicking an element brings it back.
 - **Toolbar**: the first row holds the mockup name and file actions. The second row is your **Groups** library. The screens strip below it has the screen tabs plus the frame, zoom, grid, layout and view controls.
 - **Select several**: drag a box on empty canvas, or Shift-click elements (⌘/Ctrl A selects all). Drag any selected element to move them all. The inspector can align, keep together, duplicate or delete the selection.
