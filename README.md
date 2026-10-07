@@ -34,6 +34,16 @@ In the library, press **+** on any number of cards (or Shift-click them) to coll
 
 **Design with AI** (in progress): sketch a page with rough sections instead of picking components. Each section is just a name and, in your own words, what it should do. Start from a structure (header + sections, dashboard, sidebar app, list + detail, landing page, mobile feed, mobile detail) or add your own. You can split sections side by side or top to bottom, merge, duplicate, delete, drag a section beside or onto another, drag the gaps to resize, and double-click to rename. Sketches are saved with the mockup (each page of it has its own), and **Use as layout guides** hands the sections to the builder. Next phases: AI suggests visual options for each section, refines them in conversation, and exports a structured spec for Claude Code.
 
+**Your elements**: add elements the library doesn't have, and keep growing it.
+
+- **+ New element** (in the sidebar, or the Your elements section) asks for a name, a code such as `tea.timer`, a group, other names, what it is, when to use it, a default label and size. For the preview, pick a wireframe (box, button, field, card, list, chips, tabs, slider, switch, chart, image, heading or text) or paste your own HTML; write `{label}` where the label goes. Inline styles and the library's classes work; scripts, style tags and event handlers are removed.
+- **Make my own version** on any built-in element's page starts a new element from its look and description.
+- **Save to library…** in the builder's inspector turns the selected element into one of yours with its label, size and look. With several selected, **Save to library as one element…** makes a single element that looks like the whole selection.
+- Your elements work everywhere the built-in ones do: search, the palette, **Replace with…**, Help me choose, groups, and Copy for Claude, which adds a "Your elements" section describing them so Claude knows what each code means (in **Changes only** too).
+- Nothing gets dropped: when a mockup file or an imported page uses a code the library doesn't know, it comes in as a placeholder in Your elements marked **Needs a description**. Open it and press **Describe it**.
+- Mockup files and backups carry the definitions of the elements they use, so they open complete in another browser. **Export library** and **Import library** move all your elements at once. They're kept in this browser, or in the Artifact's shared database when it runs as an Artifact.
+- Deleting one of your elements turns any placed copies into labelled placeholder boxes.
+
 **Mockup builder**: drag elements onto a desktop (1280), tablet (834) or mobile (390) frame, then move, resize and relabel them and add notes. It has snap-to-grid, undo/redo and keyboard shortcuts.
 
 - **Palette**: hover an element to preview it, or switch on preview thumbnails. While you drag, the element shows at canvas scale. The **Blocks** tab has ready-made combinations such as headers, button pairs, sign-in and payment forms, KPI rows and landing-page sections. A block is added as a group: dragging moves the whole block, and Alt-drag moves one piece.
