@@ -78,3 +78,12 @@ test('your own element joins the library and the builder', async ({ page }) => {
   await page.evaluate(i => { setMode('builder'); addEl(i); }, id);
   expect(await page.evaluate(i => M.els.some(e => e.type === i), id)).toBe(true);
 });
+
+test('opens straight from disk, with no server', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', e => errors.push(e.message));
+  await page.goto('file://' + require('path').resolve(__dirname, '..', 'index.html'));
+  await page.waitForFunction(() => typeof booted !== 'undefined' && booted);
+  expect(await page.locator('#secs .card').count()).toBeGreaterThan(350);
+  expect(errors).toEqual([]);
+});

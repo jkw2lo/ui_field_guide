@@ -70,11 +70,20 @@ In the library, press **+** on any number of cards (or Shift-click them) to coll
 ## Project layout
 
 ```
-index.html   the whole app: styles, element catalogue and builder
-README.md
+index.html          markup and styles
+js/catalogue.js     icons, groups (CATS) and every element (E) with its preview
+js/library.js       shared helpers, your own elements, mode switching, the library, Help me choose
+js/builder.js       the mockup builder: screens, layouts, blocks, palette, canvas, inspector,
+                    flow map, Play, groups, copy and paste, export, images and saving
+js/design.js        Design with AI: the rough canvas of intent sections
+js/importer.js      importing a web page and the "Changes only" export
+js/boot.js          start-up (loaded last)
+tests/              Playwright smoke tests and a sample app page for the importer
 ```
 
-Element definitions are in the `E` array inside `index.html`. Each entry looks like this:
+There is still no build step. The scripts are plain `<script>` tags loaded in order and share one global scope, so files only define things and wire events; `boot.js` draws the app once everything has loaded. Styles stay inline in `index.html` because image export copies them into the exported picture, which also has to work when the file is opened from disk.
+
+Element definitions are in the `E` array in `js/catalogue.js`. Each entry looks like this:
 
 ```js
 { id: 'nav.tabs', c: 'nav', n: 'Tabs', aka: [...], s: [w, h], t: 'default label',
@@ -83,7 +92,17 @@ Element definitions are in the `E` array inside `index.html`. Each entry looks l
   h: t => `preview HTML` }
 ```
 
-Previews use the shared `.u` utility classes and the `--w-*` color tokens, so they follow light and dark mode.
+Previews use the shared `.u` utility classes and the `--w-*` color tokens, so they follow light and dark mode and the visual styles.
+
+## Tests
+
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+The tests serve the repo with `python3 -m http.server` and drive the app in Chromium: the library, builder, Design with AI, page import (including the bookmarklet's new-tab handoff on `tests/fixtures/sample-app.html`), downloads and backups. GitHub Actions runs them on every pull request.
 
 ## Hosting
 
