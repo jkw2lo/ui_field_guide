@@ -65,16 +65,26 @@ In the library, press **+** on any number of cards (or Shift-click them) to coll
   - PNG images (2×) of the current screen, all screens on one sheet, or the flow map.
   - The mockup as a `.json` file, including the groups it uses.
   - A **full backup** of every saved mockup, all your groups and the open mockup. Restore it from Open → Open a file if browser storage is ever cleared.
+- **Storage**: mockups are kept in this browser, which allows about 5 MB per site. A banner warns when storage is getting full, says clearly when a save could not be stored, and reminds you to download a backup if your saved mockups have never been backed up (or not for two weeks). Download shows how much space is used.
 - **Save / Save as / Open**: Save overwrites the open mockup, and Save as makes a new copy under a new name. In Open, **Start from** opens a copy of an older mockup so the original stays unchanged. Open can also load a mockup file or a backup. Mockups are kept in this browser's local storage. When the page runs as a claude.ai Artifact, they go to the Artifact's shared database instead. Mockups saved before screens existed open as one-screen mockups.
 
 ## Project layout
 
 ```
-index.html   the whole app: styles, element catalogue and builder
-README.md
+index.html          markup and styles
+js/catalogue.js     icons, groups (CATS) and every element (E) with its preview
+js/library.js       shared helpers, your own elements, mode switching, the library, Help me choose
+js/builder.js       the mockup builder: screens, layouts, blocks, palette, canvas, inspector,
+                    flow map, Play, groups, copy and paste, export, images and saving
+js/design.js        Design with AI: the rough canvas of intent sections
+js/importer.js      importing a web page and the "Changes only" export
+js/boot.js          start-up (loaded last)
+tests/              Playwright smoke tests and a sample app page for the importer
 ```
 
-Element definitions are in the `E` array inside `index.html`. Each entry looks like this:
+There is still no build step. The scripts are plain `<script>` tags loaded in order and share one global scope, so files only define things and wire events; `boot.js` draws the app once everything has loaded. Styles stay inline in `index.html` because image export copies them into the exported picture, which also has to work when the file is opened from disk.
+
+Element definitions are in the `E` array in `js/catalogue.js`. Each entry looks like this:
 
 ```js
 { id: 'nav.tabs', c: 'nav', n: 'Tabs', aka: [...], s: [w, h], t: 'default label',
@@ -83,7 +93,17 @@ Element definitions are in the `E` array inside `index.html`. Each entry looks l
   h: t => `preview HTML` }
 ```
 
-Previews use the shared `.u` utility classes and the `--w-*` color tokens, so they follow light and dark mode.
+Previews use the shared `.u` utility classes and the `--w-*` color tokens, so they follow light and dark mode and the visual styles.
+
+## Tests
+
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+The tests serve the repo with `python3 -m http.server` and drive the app in Chromium: the library, builder, Design with AI, page import (including the bookmarklet's new-tab handoff on `tests/fixtures/sample-app.html`), downloads and backups. GitHub Actions runs them on every pull request.
 
 ## Hosting
 

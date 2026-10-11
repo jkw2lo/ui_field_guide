@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brewlog · Dashboard</title>
+<style>
+  body{margin:0;font:15px/1.5 system-ui,sans-serif;color:#1d2330;background:#f6f7f9}
+  header{display:flex;align-items:center;gap:24px;height:60px;padding:0 24px;background:#fff;border-bottom:1px solid #e3e6ea}
+  header a{color:#1d2330;text-decoration:none}
+  .brand{font-weight:700;font-size:18px}
+  .signin{margin-left:auto;padding:8px 16px;border-radius:8px;background:#2e4bd8;color:#fff;border:0}
+  .layout{display:flex}
+  .sidebar{width:220px;min-height:900px;padding:16px;background:#fff;border-right:1px solid #e3e6ea}
+  .sidebar ul{list-style:none;margin:0;padding:0}
+  .sidebar a{display:flex;align-items:center;gap:8px;padding:6px 8px;color:#1d2330;text-decoration:none}
+  main{flex:1;padding:24px 32px}
+  h1{font-size:28px;margin:0 0 16px}
+  .toolbar{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .btn-group{display:inline-flex}
+  .btn-group button{padding:6px 12px;border:1px solid #c7ccd4;background:#fff}
+  .search{width:260px;padding:8px 10px;border:1px solid #c7ccd4;border-radius:8px}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:640px;margin-bottom:24px}
+  label{display:block;font-size:13px;font-weight:600}
+  input[type=text],input[type=email],select{width:100%;padding:8px 10px;border:1px solid #c7ccd4;border-radius:8px;box-sizing:border-box}
+  .cards{display:flex;gap:16px;margin:24px 0}
+  .card{width:220px;padding:12px;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .card img{width:100%;height:120px;display:block;border-radius:8px}
+  table{width:100%;border-collapse:collapse;background:#fff}
+  th,td{padding:8px 12px;border-bottom:1px solid #e3e6ea;text-align:left}
+  footer{padding:24px;background:#1d2330;color:#fff}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="/">Brewlog</a>
+  <a href="/brews">Brews</a><a href="/teas">Teas</a><a href="/stats">Stats</a>
+  <button class="signin">Sign in</button>
+</header>
+<div class="layout">
+  <div class="sidebar">
+    <ul>
+      <li><a href="/today">Today</a></li>
+      <li><a href="/history">History</a></li>
+      <li><a href="/collection">Collection</a></li>
+      <li><a href="/favourites">Favourites</a></li>
+      <li><a href="/settings">Settings</a></li>
+    </ul>
+  </div>
+  <main>
+    <h1>Today’s brews</h1>
+    <div class="toolbar">
+      <div class="btn-group" role="group"><button>Day</button><button>Week</button><button>Month</button></div>
+      <input class="search" type="search" placeholder="Search brews">
+    </div>
+    <form>
+      <div><label for="tea">Tea name</label><input id="tea" type="text" placeholder="Sencha"></div>
+      <div><label for="mail">Email</label><input id="mail" type="email"></div>
+      <div><label for="vessel">Vessel</label><select id="vessel"><option>Gaiwan</option><option>Teapot</option></select></div>
+      <div><label><input type="checkbox"> Remind me tomorrow</label></div>
+      <div><span>Strength</span>
+        <label><input type="radio" name="strength"> Light</label>
+        <label><input type="radio" name="strength"> Medium</label>
+        <label><input type="radio" name="strength"> Strong</label>
+      </div>
+    </form>
+    <canvas width="640" height="200" style="width:640px;height:200px;background:#fff"></canvas>
+    <div class="cards">
+      <div class="card"><img alt="Sencha" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%2399b'/%3E%3C/svg%3E"><h3>Sencha</h3><p>Grassy and bright.</p></div>
+      <div class="card"><img alt="Oolong" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23b99'/%3E%3C/svg%3E"><h3>Oolong</h3><p>Roasted and smooth.</p></div>
+    </div>
+    <table><thead><tr><th>Tea</th><th>Steeps</th><th>Rating</th></tr></thead>
+      <tbody><tr><td>Sencha</td><td>3</td><td>4</td></tr><tr><td>Oolong</td><td>5</td><td>5</td></tr></tbody></table>
+  </main>
+</div>
+<footer>Brewlog · made with care</footer>
+</body>
+</html>
