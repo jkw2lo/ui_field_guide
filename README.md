@@ -65,6 +65,7 @@ In the library, press **+** on any number of cards (or Shift-click them) to coll
   - PNG images (2×) of the current screen, all screens on one sheet, or the flow map.
   - The mockup as a `.json` file, including the groups it uses.
   - A **full backup** of every saved mockup, all your groups and the open mockup. Restore it from Open → Open a file if browser storage is ever cleared.
+- **Storage**: mockups are kept in this browser, which allows about 5 MB per site. A banner warns when storage is getting full, says clearly when a save could not be stored, and reminds you to download a backup if your saved mockups have never been backed up (or not for two weeks). Download shows how much space is used.
 - **Save / Save as / Open**: Save overwrites the open mockup, and Save as makes a new copy under a new name. In Open, **Start from** opens a copy of an older mockup so the original stays unchanged. Open can also load a mockup file or a backup. Mockups are kept in this browser's local storage. When the page runs as a claude.ai Artifact, they go to the Artifact's shared database instead. Mockups saved before screens existed open as one-screen mockups.
 
 ## Project layout

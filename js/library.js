@@ -7,7 +7,21 @@ const short=(t,n=28)=>{t=String(t??'').trim();return t.length>n?t.slice(0,n-1)+'
 const firstSentence=s=>String(s||'').split(/(?<=\.)\s/)[0];
 
 /* ---------- storage helpers ---------- */
-const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+// set returns false when the browser refuses to store (usually because storage is full)
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){if(/quota/i.test(e?.name+e?.message))storageTrouble();return false}}};
+/* storage health: browsers give each site about 5 MB here. Warn before it fills, say so when a save fails,
+   and remind people to back up, since saved mockups live only in this browser. */
+var appReady=false,storeFull=false;
+const STORE_LIMIT=5e6,DAY=864e5;
+const storeUsed=()=>{let n=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);n+=k.length+(localStorage.getItem(k)||'').length}}catch{}return n};
+const mb=n=>(n/1e6).toFixed(n<1e6?2:1)+' MB';
+function storageTrouble(){storeFull=true;if(appReady)drawStoreBar()}
+function drawStoreBar(){const b=$('#storeBar');if(!b||!appReady)return;const used=storeUsed(),pct=used/STORE_LIMIT,last=LS.get('uifg.lastBackup',0),now=Date.now(),meter=`<span class="meter" title="${mb(used)} of about ${mb(STORE_LIMIT)}"><i style="width:${Math.min(100,Math.round(pct*100))}%"></i></span>`,acts='<button class="b sm pri" data-sb="backup">Download backup</button><button class="b sm" data-sb="open">Manage mockups</button>';let html='',cls='';
+ if(storeFull||pct>=.9){cls='urgent';html=`${meter}<span class="msg"><b>${storeFull?'Your latest changes aren’t being saved':'This browser’s storage is almost full'}.</b> ${mb(used)} of about ${mb(STORE_LIMIT)} is used. Download a backup, then delete mockups you no longer need.</span>${acts}`}
+ else if(pct>=.75&&now-LS.get('uifg.storeSnooze',0)>DAY){html=`${meter}<span class="msg">Storage is getting full: ${mb(used)} of about ${mb(STORE_LIMIT)} used.</span>${acts}<button class="b sm" data-sb="later">Hide</button>`}
+ else if(!db&&localSaved().length&&(!last||now-last>14*DAY)&&now-LS.get('uifg.backupSnooze',0)>7*DAY){cls='soft';html=`<span class="msg">Your saved mockups live only in this browser, and ${last?`your last backup was ${Math.round((now-last)/DAY)} days ago`:'you haven’t backed them up yet'}. A backup file keeps them safe if browser data is cleared.</span><button class="b sm pri" data-sb="backup">Download backup</button><button class="b sm" data-sb="snooze">Later</button>`}
+ b.className='storebar '+cls;b.innerHTML=html;b.hidden=!html}
+document.getElementById('storeBar').addEventListener('click',ev=>{const a=ev.target.closest('[data-sb]')?.dataset.sb;if(a==='backup')downloadBackup();if(a==='open'){setMode('builder');$('#openBtn').click()}if(a==='later')LS.set('uifg.storeSnooze',Date.now());if(a==='snooze')LS.set('uifg.backupSnooze',Date.now());drawStoreBar()});
 const $=s=>document.querySelector(s);
 function toast(msg){document.querySelectorAll('.toast').forEach(t=>t.remove());const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2600)}
 

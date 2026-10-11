@@ -375,6 +375,25 @@ textarea.inp{height:auto;min-height:64px;padding:8px 10px;resize:vertical;line-h
 .rp b{font-size:12.5px;padding:6px 8px 0}
 .rp .k{padding:2px 8px 8px}
 
+/* storage health banner */
+.storebar{display:flex;align-items:center;gap:10px;padding:8px 16px;font-size:13px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--warn) 12%,var(--surface));flex-wrap:wrap}
+.storebar.urgent{background:color-mix(in srgb,var(--danger) 13%,var(--surface))}
+.storebar.soft{background:var(--soft)}
+.storebar .msg{flex:1 1 280px;min-width:0}
+.storebar .meter{width:90px;height:6px;border-radius:3px;background:var(--line);overflow:hidden;flex:none}
+.storebar .meter i{display:block;height:100%;background:var(--warn)}
+.storebar.urgent .meter i{background:var(--danger)}
+/* phone toolbar: file actions fold into one menu */
+.filegrp{display:contents}
+#fileBtn{display:none}
+#exportBtn .sh{display:none}
+.filemenu{display:flex;flex-direction:column;gap:8px}
+.filemenu .b{height:44px;justify-content:flex-start;font-size:15px}
+@media (max-width:760px){.filegrp,.wbar .sepv,#inspBtn,.gbar .ghint{display:none}#fileBtn{display:inline-flex}#exportBtn .lg{display:none}#exportBtn .sh{display:inline}.wbar .name{flex-basis:100px}}
+/* the library and palette only lay out and paint the previews near the screen */
+.cards .card{content-visibility:auto;contain-intrinsic-size:auto 238px}
+.pgrid .pi.th{content-visibility:auto;contain-intrinsic-size:auto 92px}
+
 /* play (click-through prototype) */
 .play{position:fixed;inset:0;z-index:58;background:var(--bg);display:flex;flex-direction:column}
 .play .pbar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surface);flex-wrap:wrap}
@@ -535,6 +554,7 @@ textarea.inp{height:auto;min-height:64px;padding:8px 10px;resize:vertical;line-h
       <button role="tab" id="tabBld" aria-selected="false">Mockup builder</button>
     </div>
   </header>
+  <div class="storebar" id="storeBar" role="status" hidden></div>
 
   <section class="view" id="vLib">
     <div class="lib">
@@ -585,13 +605,16 @@ textarea.inp{height:auto;min-height:64px;padding:8px 10px;resize:vertical;line-h
           <button class="b icon" id="undoBtn" title="Undo (Ctrl/⌘+Z)"></button>
           <button class="b icon" id="redoBtn" title="Redo (Ctrl/⌘+Shift+Z)"></button>
           <span class="sepv"></span>
+          <span class="filegrp">
           <button class="b" id="newBtn">New</button>
           <button class="b" id="openBtn" title="Open a saved mockup or a file">Open</button>
           <button class="b" id="saveBtn" title="Save (Ctrl/⌘+S)">Save</button>
           <button class="b" id="saveAsBtn" title="Save as a new copy (Ctrl/⌘+Shift+S)">Save as</button>
           <button class="b" id="dlBtn" title="Images of your screens, mockup files and a full backup"></button>
+          </span>
+          <button class="b" id="fileBtn" aria-haspopup="dialog">File</button>
           <span class="sepv"></span>
-          <button class="b pri" id="exportBtn">Copy for Claude</button>
+          <button class="b pri" id="exportBtn"><span class="lg">Copy for Claude</span><span class="sh">Copy</span></button>
           <button class="b icon" id="inspBtn" aria-pressed="true"></button>
         </div>
         <div class="gbar" id="gbar"></div>
