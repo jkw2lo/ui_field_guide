@@ -1,0 +1,40 @@
+{
+  "version": 3,
+  "name": "UI Field Guide",
+  "tagline": "Every UI element, named",
+  "pitch": "A searchable library of named UI elements with live previews, and a drag-and-drop mockup builder.",
+  "accent": "#3346d3",
+  "status": "Live",
+
+  "problem": "It's hard to ask for a UI element when you don't know its name.",
+  "stats": [
+    { "value": "379", "label": "elements, each with a live preview" },
+    { "value": "14", "label": "groups, from buttons to AI and chat" },
+    { "value": "7", "label": "preview styles, from glass to brutalist" }
+  ],
+
+  "features": [
+    { "title": "Every element, named", "text": "Live previews, the other names people use, and a short code for each.",
+      "details": ["What it is, when to use it, what it gets mixed up with", "Restyle every preview at once, with any accent colour", "Help me choose suggests elements from a few questions"],
+      "screen": { "src": "controls.png", "alt": "The Dials and control panels group: temperature dial, rotary knob, selector switch, chicken-head knob, key switch, range slider, radial menu and picker wheel" } },
+    { "title": "Know what to ask for", "text": "Each element's page says exactly what to call it in a request.",
+      "details": ["Also called: thermostat dial, climate dial", "Often confused with: rotary knob, gauge"],
+      "screen": { "src": "detail.png", "alt": "The Temperature dial page: a live dial at 72°, its other names, what it is, when to use it, what it's confused with and how to ask for it" } },
+    { "title": "Mock it up", "text": "Drag elements onto desktop, tablet or phone frames, and they snap into place.",
+      "details": ["Link screens, see the flow map and click through", "Copy for Claude: the layout as plain text and JSON"],
+      "screen": { "src": "builder.png", "alt": "The mockup builder with an example recipe app on a phone frame: search, filter chips, popular recipes and recently viewed" } },
+    { "title": "Start from a real page", "text": "A bookmark reads any page's layout into an editable screen.",
+      "details": ["Then copy just your changes back as a request"] }
+  ],
+
+  "screens": [
+    { "src": "desktop.png", "alt": "UI Field Guide's library: the groups down the left, preview styles, and a grid of buttons with their names and codes", "caption": "The library" }
+  ],
+
+  "facts": {
+    "worksOn": "Desktop browsers",
+    "data": "Saved in your browser",
+    "builtWith": "One HTML file, no build step",
+    "started": "Oct 2026"
+  }
+}
