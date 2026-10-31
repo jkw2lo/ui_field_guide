@@ -1,0 +1,12 @@
+{
+  "name": "ui-field-guide",
+  "private": true,
+  "description": "UI Field Guide: a named library of UI elements and a mockup builder. No build step; the tooling here is only for tests.",
+  "scripts": {
+    "test": "playwright test",
+    "serve": "python3 -m http.server 8777"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0"
+  }
+}
