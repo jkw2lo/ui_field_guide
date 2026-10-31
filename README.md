@@ -90,3 +90,14 @@ Previews use the shared `.u` utility classes and the `--w-*` color tokens, so th
 Works as-is on GitHub Pages: enable Pages on the repo's default branch and it will serve `index.html`.
 
 The only external requests are Google Fonts. If the fonts can't load, the page falls back to system fonts.
+
+## Demo for portfolio visitors
+
+Opened from Jen's portfolio (`?from=portfolio`) by someone with no mockups, groups or elements of
+their own, the page offers **See the demo** or **Start fresh**. The library is never empty and the
+builder already opens on its example mockup (marked *Example*), so the demo is a walk round in
+eight steps: the library, preview styles, an element's page, the builder, the flow map, Copy for
+Claude, the three sections, and over to you. Nothing is loaded or cleared, and there's no banner.
+The setup is the last script in `index.html`; `demo-welcome.js` is the overlay, shared with the
+other projects (its master and the style guide, `DEMO.md`, are in the portfolio repo).
+

@@ -2092,5 +2092,40 @@ booted=true;buildRail();drawLibSty();drawLib();drawTray();drawPal();pullLinked()
 $('#tabAI').innerHTML=I('sparkle',14)+'Design with AI';
 const startHash=location.hash.replace('#','');setMode(startHash==='design'?'ai':startHash==='builder'||startHash==='library'?startHash:(LS.get('uifg.mode','library')));
 </script>
+<!-- Demo or fresh start, for visitors from Jen's portfolio (demo-welcome.js; the style guide is
+     DEMO.md in the portfolio repo). The library is never empty and the builder opens on its own
+     example mockup, which says it's an example, so the demo is the walk round: nothing to load,
+     nothing to clear, no banner. -->
+<script src="demo-welcome.js"></script>
+<script>
+if (window.DemoWelcome) DemoWelcome.init({
+  id: 'ui-field-guide',
+  name: 'UI Field Guide',
+  accent: '#3346d3',
+  demo: 'A guided look round: the library, an element\u2019s page, and an example mockup with linked screens.',
+  fresh: 'On your own: the whole library, and a builder that starts from an example.',
+  isEmpty: () => !['uifg.draft', 'uifg.saved', 'uifg.custom', 'uifg.groups'].some(k => localStorage.getItem(k)),
+  loadDemo: () => { setMode('library'); },
+  banner: false,
+  tour: [
+    { go: () => { closeOverlay(); setMode('library'); }, el: ['#rail', '.lib'], title: 'The library',
+      text: '379 elements, each with a live preview, from buttons to AI and chat. Search by any name people use for one.' },
+    { el: ['.stybar'], title: 'Preview style',
+      text: 'Restyle every preview at once, from rounded to glass to brutalist, with any accent colour.' },
+    { go: () => openDetail('ctl.thermostat'), el: ['.drawer'], title: 'Know what to ask for',
+      text: 'Each element\u2019s page: what it is, when to use it, its other names, what it gets confused with, and a short code to ask for it by.' },
+    { go: () => { closeOverlay(); setFlow(false); setMode('builder'); }, el: ['#area'], title: 'Mock it up',
+      text: 'Drag elements onto a desktop, tablet or phone frame, and they snap into place. This example is a three-screen recipe app.' },
+    { go: () => setFlow(true), el: ['#flow'], title: 'Screens that link',
+      text: 'Every screen with an arrow for each link between them. Play clicks through them like the real thing.' },
+    { go: () => setFlow(false), el: ['#exportBtn'], title: 'Copy for Claude',
+      text: 'The whole mockup as plain text and JSON, ready to hand to Claude as a request.' },
+    { el: ['.modes'], title: 'Every section',
+      text: 'The library, the mockup builder and Design with AI, where you sketch a page in rough sections first.' },
+    { go: () => setMode('library'), title: 'Over to you',
+      text: 'Search for an element, open its page, or drag a few into the builder. Saved mockups and your own elements stay in this browser.' },
+  ],
+});
+</script>
 </body>
 </html>
